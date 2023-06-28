@@ -13,15 +13,18 @@ global:
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
 scrape_configs:
-  - job_name: 'blackbox_x'
+  - job_name: 'blackbox'
     metrics_path: '/probe'
     params:
-      module: [http_2xx]  # Look for a HTTP 200 response.
+      module: [icmp]  # Look for a HTTP 200 response.
+    scrape_interval: 5s  
     tls_config:
       insecure_skip_verify: true
     static_configs:
       - targets:
-        - https://www.spiegel.de
+        - spiegel.de
+        - dns.google
+        - ndr.de
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
