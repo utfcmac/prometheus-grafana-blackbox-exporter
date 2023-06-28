@@ -17,7 +17,7 @@ services:
       - '--web.console.templates=/usr/share/prometheus/consoles'
       - '--web.enable-lifecycle'
     ports:
-      - 9090:9090
+      - 9009:9009
     restart: always
 
   grafana:
